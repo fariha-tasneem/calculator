@@ -11,6 +11,7 @@ export const ACTIONS = {
   EVALUATE: 'evaluate'
 }
 
+// REDUCER
 function reducer(state, { type, payload }) {
   switch(type) {
     case ACTIONS.ADD_DIGIT:
@@ -96,6 +97,7 @@ function reducer(state, { type, payload }) {
   }
 }
 
+// EVALUATE FUNCTION
 function evaluate({ currentOperand, previousOperand, operation}) {
   const prev = parseFloat(previousOperand)
   const current = parseFloat(currentOperand)
@@ -118,9 +120,12 @@ function evaluate({ currentOperand, previousOperand, operation}) {
   return computation.toString()
 }
 
+
 const INTEGER_FORMATTER = new Intl.NumberFormat("en-us", {
   maximumFractionDigits:0,
 })
+
+// FORMAT OPERAND
 function formatOperand(operand) {
   if (operand == null) return
   const [integer, decimal] = operand.split('.')
